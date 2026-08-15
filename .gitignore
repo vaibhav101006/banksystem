@@ -1,0 +1,8 @@
+target/
+tomcat.*/
+*.db
+*.mv.db
+*.lock.db
+cookies.txt
+.DS_Store
+*.class
