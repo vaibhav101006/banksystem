@@ -5,8 +5,8 @@
 **Enrollment Number:** 92610120040  
 **Department:** Department of Computer Engineering  
 **Institution:** Faculty of Engineering and Technology, Marwadi University  
-**GitHub Repository:** [https://github.com/vaibhav101006/banksystem](https://github.com/vaibhav101006/banksystem)  
-**Live Deployed Application:** [https://banksystem-scbs.onrender.com](https://banksystem-scbs.onrender.com)  
+**GitHub Repository:** [https://github.com/vaibhav101006/bunksystem](https://github.com/vaibhav101006/bunksystem)  
+**Live Deployed Application:** [https://bunksystem-scbs.onrender.com](https://bunksystem-scbs.onrender.com)  
 
 ---
 
@@ -112,8 +112,8 @@ If deploying to external database servers:
 Clone the repository and run using Maven:
 ```bash
 # 1. Clone repository
-git clone https://github.com/vaibhav101006/banksystem.git
-cd banksystem
+git clone https://github.com/vaibhav101006/bunksystem.git
+cd bunksystem
 
 # 2. Compile and launch embedded server
 mvn clean compile exec:java
@@ -141,7 +141,7 @@ docker run -p 8080:8080 scbs-app
 ## 🌐 7. Cloud Deployment Information
 
 - **Hosting Environment**: Render Cloud Application Platform / Docker Container
-- **Deployed Web App URL**: [https://banksystem-scbs.onrender.com](https://banksystem-scbs.onrender.com)
+- **Deployed Web App URL**: [https://bunksystem-scbs.onrender.com](https://bunksystem-scbs.onrender.com)
 - **Deployment Configuration**: Configured via `Dockerfile` and `Procfile` utilizing Eclipse Temurin 17 JRE.
 - **Health Check Endpoint**: `/login` (Status 200 OK)
 
@@ -163,7 +163,7 @@ docker run -p 8080:8080 scbs-app
 ## 📂 9. Project Directory Structure
 
 ```
-banksystem/
+bunksystem/
 ├── pom.xml                                // Maven dependencies, plugins & build specs
 ├── database_setup.sql                     // Standalone SQL DDL & DML initialization script
 ├── Dockerfile                             // Container deployment definition
