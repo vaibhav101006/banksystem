@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List, com.scbs.model.ClassSection" %>
-<% request.setAttribute("pageTitle", "Register — SCBS"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="pageTitle" value="Register — SCBS" scope="request"/>
 <jsp:include page="../common/header.jsp"/>
 
 <div class="container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px;">
@@ -11,32 +11,28 @@
       <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 4px;">Join your class collective consensus network</p>
     </div>
 
-    <% if (request.getAttribute("error") != null) { %>
-      <div class="alert alert-error"><%= request.getAttribute("error") %></div>
-    <% } %>
+    <!-- Server-Side Error Alert using JSTL -->
+    <c:if test="${not empty error}">
+      <div class="alert alert-error">⚠️ <c:out value="${error}"/></div>
+    </c:if>
 
-    <form action="${pageContext.request.contextPath}/register" method="POST">
+    <form action="${pageContext.request.contextPath}/register" method="POST" id="registerForm">
       <div class="form-group">
         <label class="form-label" for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" class="form-control" required placeholder="e.g. Jordan Lee">
+        <input type="text" id="fullName" name="fullName" class="form-control" required placeholder="e.g. Jordan Lee" pattern="[A-Za-z\s]{3,50}" title="Name must be between 3 and 50 characters, letters only">
       </div>
 
       <div class="grid-2">
         <div class="form-group">
           <label class="form-label" for="rollNumber">Roll Number</label>
-          <input type="text" id="rollNumber" name="rollNumber" class="form-control" required placeholder="CSE-2024-005">
+          <input type="text" id="rollNumber" name="rollNumber" class="form-control" required placeholder="CSE-2024-005" pattern="[A-Za-z0-9\-]{4,20}">
         </div>
         <div class="form-group">
           <label class="form-label" for="classId">Class Section</label>
           <select id="classId" name="classId" class="form-control" required>
-            <%
-              List<ClassSection> classes = (List<ClassSection>) request.getAttribute("classes");
-              if (classes != null) {
-                for (ClassSection cs : classes) {
-            %>
-              <option value="<%= cs.getId() %>"><%= cs.getName() %> (<%= cs.getSemester() %>)</option>
-            <%   }
-              } %>
+            <c:forEach var="cs" items="${classes}">
+              <option value="${cs.id}"><c:out value="${cs.name}"/> (<c:out value="${cs.semester}"/>)</option>
+            </c:forEach>
           </select>
         </div>
       </div>
@@ -48,7 +44,7 @@
 
       <div class="form-group">
         <label class="form-label" for="password">Create Password</label>
-        <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••">
+        <input type="password" id="password" name="password" class="form-control" required minlength="6" placeholder="••••••••">
       </div>
 
       <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">

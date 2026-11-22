@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% request.setAttribute("pageTitle", "Login — SCBS"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="pageTitle" value="Login — SCBS" scope="request"/>
 <jsp:include page="../common/header.jsp"/>
 
 <div class="container" style="min-height: 80vh; display: flex; align-items: center; justify-content: center;">
@@ -16,22 +17,23 @@
       <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;">Smart Collective Bunk &amp; Attendance Consensus</p>
     </div>
 
-    <% if (request.getAttribute("error") != null) { %>
-      <div class="alert alert-error"><%= request.getAttribute("error") %></div>
-    <% } %>
-    <% if (request.getParameter("msg") != null) { %>
-      <div class="alert alert-success"><%= request.getParameter("msg") %></div>
-    <% } %>
+    <!-- Server-Side Error & Status Alerts using JSTL and EL -->
+    <c:if test="${not empty error}">
+      <div class="alert alert-error">⚠️ <c:out value="${error}"/></div>
+    </c:if>
+    <c:if test="${not empty param.msg}">
+      <div class="alert alert-success">✅ <c:out value="${param.msg}"/></div>
+    </c:if>
 
-    <form action="${pageContext.request.contextPath}/login" method="POST">
+    <form action="${pageContext.request.contextPath}/login" method="POST" id="loginForm">
       <div class="form-group">
         <label class="form-label" for="email">Student / Admin Email</label>
-        <input type="email" id="email" name="email" class="form-control" required placeholder="alex@scbs.edu">
+        <input type="email" id="email" name="email" class="form-control" required placeholder="alex@scbs.edu" autocomplete="email">
       </div>
 
       <div class="form-group">
         <label class="form-label" for="password">Password</label>
-        <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••">
+        <input type="password" id="password" name="password" class="form-control" required minlength="4" placeholder="••••••••" autocomplete="current-password">
       </div>
 
       <button type="submit" class="btn btn-primary btn-block" style="margin-top: 8px;">Sign In</button>
