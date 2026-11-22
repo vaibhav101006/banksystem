@@ -17,6 +17,9 @@ package.json
 shots/
 generate_*.js
 make_*.js
+package_*.js
+package_*.ps1
+*.zip
 test*.js
 test*.html
 test*.png

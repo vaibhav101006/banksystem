@@ -1,5 +1,5 @@
 -- =====================================================================
--- Smart Collective Bunk System (SCBS) / Banking Consensus System
+-- Smart Collective Bunk System (SCBS)
 -- Advanced Java Technology (AJT - 01CE0308) - Task 4 Database Scripts
 -- Student Name: Vaibhav Rabadiya (Enrollment No: 92610120040)
 -- Department of Computer Engineering, Marwadi University

@@ -1,4 +1,4 @@
-# Smart Collective Bunk System (SCBS) / Banking Consensus System
+# Smart Collective Bunk System (SCBS)
 ### Advanced Java Technology (AJT – 01CE0308) | Final Project Submission & Deployment
 
 **Student Name:** Vaibhav Rabadiya  
